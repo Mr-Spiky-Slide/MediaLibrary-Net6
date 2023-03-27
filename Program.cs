@@ -33,6 +33,20 @@ Console.ForegroundColor = ConsoleColor.Green;
      Console.WriteLine($"  {m.title}");
  }
 
+ // LINQ - Where filter operator & Select projection operator & Contains quantifier operator
+ var titles = movieFile.Movies.Where(m => m.title.Contains("Shark")).Select(m => m.title);
+
+ // LINQ - Count aggregation method
+ Console.WriteLine($"There are {titles.Count()} movies with \"Shark\" in the title:");
+ foreach(string t in titles)
+ {
+     Console.WriteLine($"  {t}");
+ }
+
+// LINQ - First element operator
+ var FirstMovie = movieFile.Movies.First(m => m.title.StartsWith("Z", StringComparison.OrdinalIgnoreCase));
+ Console.WriteLine($"First movie that starts with letter 'Z': {FirstMovie.title}");
+
  Console.ForegroundColor = ConsoleColor.White;
 
 logger.Info("Program ended");
